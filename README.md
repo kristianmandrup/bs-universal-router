@@ -32,8 +32,8 @@ TODO
 open UniversalRouter;
 
 let routes = {
-  path: '/page', /* string or regexp or array of them, optional */
-  name: 'page',  /* unique string, optional */
+  path: "/page", /* string or regexp or array of them, optional */
+  name: "page",  /* unique string, optional */
   parent: None,  /* Some(route) object or None */
   children: Some([]), /* Some list of child route objects or None */
   /* what to do when route activated */
@@ -44,7 +44,7 @@ let routes = {
 
 let options = {
   context: { },
-  baseUrl: '/base',
+  baseUrl: "/base",
   resolveRoute: (context, params) => {
     if (typeof context.route.action === "function") {
       context.route.action(context, params);
