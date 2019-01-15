@@ -1,0 +1,44 @@
+{
+  "name": "bs-universal-router",
+  "description": "Bucklescript bindings for Universal Router",
+  "version": "0.1.0",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "build": "bsb -make-world",
+    "watch": "bsb -make-world -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/kristianmandrup/bs-universal-router.git"
+  },
+  "homepage": "https://gitlab.com/kristianmandrup/bs-universal-router",
+  "bugs": {
+    "url": "https://gitlab.com/kristianmandrup/bs-universal-router/issues"
+  },
+  "keywords": [
+    "BuckleScript",
+    "ReasonML",
+    "universal-router",
+    "router",
+    "universal",
+    "meiosis"
+  ],
+  "files": [
+    "src/UniversalRouter.re",
+    "bsconfig.json"
+  ],
+  "author": "Kristian Mandrup <kmandrup@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.6",
+    "bs-flyd": "kristianmandrup/bs-flyd",
+    "bs-platform": "^4.0.18",
+    "jest": "^23.6.0"
+  },
+  "peerDependencies": {
+    "universal-router": "^2.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
