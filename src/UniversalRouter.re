@@ -5,4 +5,4 @@ module Router = {
 };
 
 [@bs.module "universal-router"]
-external make: (~routes: 'a, ~options: 'b, unit) => Router.t('c) = "new";
+external make: ('a, ~options: 'b, unit) => Router.t('c) = "new";
