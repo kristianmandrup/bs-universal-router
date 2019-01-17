@@ -3,6 +3,9 @@ module Router = {
     resolve: (~pathname: string, ~context: 'c, unit) => Js.Promise.t('c),
   };
 };
-
-[@bs.module "universal-router"]
-external make: ('a, ~options: 'b, unit) => Router.t('c) = "new";
+type _routes;
+type _opts;
+[@bs.new] [@bs.module "universal-router"]
+external createRouter: (_routes, ~options: _opts, unit) => Router.t('c) =
+  "Router";
+let make = (routes, ~options, ()) => createRouter(routes, ~options, ());

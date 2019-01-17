@@ -2,25 +2,40 @@ open UniversalRouter;
 open Jest;
 open ExpectJs;
 
-let routes = {
+type params;
+type context = {route};
+type route = {
+  path: string,
+  name: string,
+  parent: option(unit),
+  children: option(array(route)),
+  action: (context, params) => unit,
+};
+
+let myRoutes = {
   path: "/page", /* string or regexp or array of them, optional */
   name: "page", /* unique string, optional */
   parent: None, /* Some(route) object or None */
-  children: Some([]), /* Some list of child route objects or None */
+  children: Some([||]), /* Some list of child route objects or None */
   /* what to do when route activated */
-  action: (context, params) => {/* some action */},
+  action: (context, params) => {
+    ();
+  },
 };
 
-type optionsType = {
-  context: 'a,
-  basUrl: string,
-  resolveRoute: (context, params) => 'b,
+type result;
+type error;
+
+type options = {
+  context,
+  baseUrl: string,
+  resolveRoute: (context, params) => result,
   errorHandler: (error, context) => string,
 };
 
-let options = {
+let myOptions: options = {
   context: {
-    name: "x",
+    title: "x",
   },
   baseUrl: "/base",
   resolveRoute: (context, params) =>
@@ -42,18 +57,18 @@ let options = {
 describe("UniversalRouter", () => {
   test("#make w NO options", () =>
     expect(() =>
-      make(routes)
+      make(myRoutes)
     ) |> not |> toThrow
   );
 
   test("#make w options", () =>
     expect(() =>
-      make(routes, ~options)
+      make(myRoutes, ~options)
     ) |> not |> toThrow
   );
 
   describe("router instance", () => {
-    let router = make(routes);
+    let router = make(myRoutes);
     let context = {title: "Home page"};
     let route = {pathname: "home", context};
     test("#resolve", () =>

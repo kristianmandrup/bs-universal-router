@@ -31,7 +31,6 @@
   "license": "MIT",
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.6",
-    "bs-flyd": "kristianmandrup/bs-flyd",
     "bs-platform": "^4.0.18",
     "jest": "^23.6.0"
   },
